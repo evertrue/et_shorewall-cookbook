@@ -1,0 +1,34 @@
+######################################################################################################################################################################################
+#ACTION   SOURCE    DEST    PROTO DEST  SOURCE    ORIGINAL  RATE    USER/ MARK  CONNLIMIT TIME         HEADERS         SWITCH
+#             PORT  PORT(S)   DEST    LIMIT   GROUP
+#SECTION ALL
+#SECTION ESTABLISHED
+#SECTION RELATED
+SECTION NEW
+
+#       Don't allow connection pickup from the net
+#
+Invalid(DROP) net   all
+#
+# Accept DNS connections from the firewall to the network
+#
+DNS(ACCEPT) $FW   net
+#
+# Accept SSH connections from the local network for administration
+#
+SSH(ACCEPT) loc   $FW
+#
+# Allow Ping from the local network
+#
+Ping(ACCEPT)  loc   $FW
+
+#
+# Drop Ping from the "bad" net zone.. and prevent your log from being flooded..
+#
+
+Ping(DROP)  net   $FW
+
+<% node['shorewall']['rules'].each do |rule| -%>
+<%= rule['action'] %> <%= rule['source'] %> <%= rule['dest'] %> <%= rule['proto'] || "" %>
+<% end -%>
+#

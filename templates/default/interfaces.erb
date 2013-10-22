@@ -1,0 +1,11 @@
+###############################################################################
+#ZONE INTERFACE BROADCAST OPTIONS
+<%
+  node['shorewall']['zone_conf']['zones'].select { |zone,zone_conf|
+    zone_conf['interface']
+  }.each do |zone,zone_conf|
+-%>
+<%= zone %> <%= zone_conf['interface'] %> <%= zone_conf['broadcast'] %> <%= ((zone_conf['iface_options'] || []) + node['shorewall']['zone_conf']['default_iface_options']).join(',') %>
+<%
+  end
+-%>
