@@ -1,5 +1,5 @@
-default['shorewall']['conf_dir'] = '/etc/shorewall'
-default['shorewall']['zone_conf'] = {
+default['et_shorewall']['conf_dir'] = '/etc/shorewall'
+default['et_shorewall']['zone_conf'] = {
   'default_iface_options' => %w('tcpflags', 'nosmurfs', 'routefilter', 'logmartians'),
   'zones' => {
     'net' => {
@@ -28,7 +28,7 @@ default['shorewall']['zone_conf'] = {
     }
   }
 }
-default['shorewall']['policies'] = [
+default['et_shorewall']['policies'] = [
   {
     'source' => 'loc',
     'dest' => 'net',
@@ -41,7 +41,7 @@ default['shorewall']['policies'] = [
     'log_level' => 'info'
   }
 ]
-default['shorewall']['rules'] = [
+default['et_shorewall']['rules'] = [
   {
     'action' => 'ACCEPT',
     'source' => '$FW',

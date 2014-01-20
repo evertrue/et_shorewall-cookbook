@@ -1,4 +1,4 @@
-name             'shorewall'
+name             'et_shorewall'
 maintainer       'EverTrue, Inc.'
 maintainer_email 'devops@evertrue.com'
 license          'All rights reserved'

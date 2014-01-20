@@ -28,7 +28,7 @@ Ping(ACCEPT)  loc   $FW
 
 Ping(DROP)  net   $FW
 
-<% node['shorewall']['rules'].each do |rule| -%>
+<% node['et_shorewall']['rules'].each do |rule| -%>
 <%= rule['action'] %> <%= rule['source'] %> <%= rule['dest'] %> <%= rule['proto'] || "" %>
 <% end -%>
 #

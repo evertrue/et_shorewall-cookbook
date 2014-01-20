@@ -22,7 +22,7 @@ cookbook_file '/etc/default/shorewall' do
 end
 
 execute 'shorewall_make' do
-  cwd node['shorewall']['conf_dir']
+  cwd node['et_shorewall']['conf_dir']
   command 'make'
   action :nothing
 end
@@ -36,7 +36,7 @@ end
   zones
 }.each do |conf_file|
 
-  template "#{node['shorewall']['conf_dir']}/#{conf_file}" do
+  template "#{node['et_shorewall']['conf_dir']}/#{conf_file}" do
     owner 'root'
     group 'root'
     mode '0644'

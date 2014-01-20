@@ -1,7 +1,7 @@
 ###############################################################################
 #INTERFACE    SOURCE    ADDRESS   PROTO PORT(S) IPSEC MARK
 <%
-  node['shorewall']['zone_conf']['zones'].select {|z,z_conf|
+  node['et_shorewall']['zone_conf']['zones'].select {|z,z_conf|
     z_conf['masq']
   }.each do |zone,zone_conf|
 -%>

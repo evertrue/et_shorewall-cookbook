@@ -1,6 +1,6 @@
 ###############################################################################
 #ZONE TYPE  OPTIONS     IN      OUT
 #         OPTIONS     OPTIONS
-<% node['shorewall']['zone_conf']['zones'].each do |zone,zone_conf| -%>
+<% node['et_shorewall']['zone_conf']['zones'].each do |zone,zone_conf| -%>
 <%= zone %> <%= zone_conf['type'] %>
 <% end -%>

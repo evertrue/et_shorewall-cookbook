@@ -28,7 +28,7 @@ describe 'et_shorewall::default' do
     zones
   }.each do |conf_file|
     it "creates shorewall config - #{conf_file}" do
-      expect(chef_run).to render_file("#{node['shorewall']['conf_dir']}/#{conf_file}")
+      expect(chef_run).to render_file("#{node['et_shorewall']['conf_dir']}/#{conf_file}")
     end
   end
 

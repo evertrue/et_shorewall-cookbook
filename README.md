@@ -8,12 +8,12 @@ Installs & configures Shorewall for a firewall.
 
 ## Attributes
 
-| Key                          | Type   | Description               |
-| ---------------------------- | ------ | ------------------------- |
-| `['shorewall']['conf_dir']`  | string | Shorewall config dir      |
-| `['shorewall']['zone_conf']` | hash   | Shorewall zone config     |
-| `['shorewall']['policies']`  | array  | Shorewall policies config |
-| `['shorewall']['rules']`     | array  | Shorewall rules           |
+| Key                             | Type   | Description               |
+| ------------------------------- | ------ | ------------------------- |
+| `['et_shorewall']['conf_dir']`  | string | Shorewall config dir      |
+| `['et_shorewall']['zone_conf']` | hash   | Shorewall zone config     |
+| `['et_shorewall']['policies']`  | array  | Shorewall policies config |
+| `['et_shorewall']['rules']`     | array  | Shorewall rules           |
 
 ## Usage
 

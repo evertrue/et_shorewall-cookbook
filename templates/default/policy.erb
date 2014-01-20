@@ -1,6 +1,6 @@
 ###############################################################################
 #SOURCE   DEST    POLICY    LOG LEVEL LIMIT:BURST
-<% node['shorewall']['policies'].each do |policy| -%>
+<% node['et_shorewall']['policies'].each do |policy| -%>
 <%= policy["source"] %> <%= policy["dest"] %> <%= policy["policy"] %> <%= policy['log_level'] || "" %>
 <% end -%>
 # THE FOLLOWING POLICY MUST BE LAST
