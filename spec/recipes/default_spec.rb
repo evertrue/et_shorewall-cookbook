@@ -1,7 +1,11 @@
 require 'spec_helper'
 
 describe 'et_shorewall::default' do
-  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+  let(:chef_run) do
+    ChefSpec::Runner.new do |node|
+      node.set['et_shorewall']['conf_dir'] = '/etc/shorewall'
+    end.converge(described_recipe)
+  end
 
   it 'installs shorewall' do
     expect(chef_run).to install_package('shorewall')
@@ -28,7 +32,7 @@ describe 'et_shorewall::default' do
     zones
   }.each do |conf_file|
     it "creates shorewall config - #{conf_file}" do
-      expect(chef_run).to render_file("#{node['et_shorewall']['conf_dir']}/#{conf_file}")
+      expect(chef_run).to render_file("#{chef_run.node['et_shorewall']['conf_dir']}/#{conf_file}")
     end
   end
 
