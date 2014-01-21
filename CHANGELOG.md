@@ -1,9 +1,9 @@
-# et_shorewall CHANGELOG
-
+et_shorewall CHANGELOG
+======================
 This is the Changelog for the et_shorewall cookbook.
 
-## v1.0.0
-
+v1.0.0
+------
 * Add Rubocop
 * Add ChefSpec tests
 * Clean up Test Kitchen config for Test Kitchen 1.x
@@ -11,6 +11,6 @@ This is the Changelog for the et_shorewall cookbook.
 * Remove Vagrantfile & Thorfile
 * Fix name of cookbook to match repository
 
-## v0.1.0
-
+v0.1.0
+------
 * Initial release
