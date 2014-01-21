@@ -25,6 +25,7 @@ execute 'shorewall_make' do
   cwd node['et_shorewall']['conf_dir']
   command 'make'
   action :nothing
+  notifies :start, 'service[shorewall]'
 end
 
 %w{
@@ -48,5 +49,5 @@ end
 
 service 'shorewall' do
   supports status: true, restart: true
-  action [:enable, :start]
+  action [:enable]
 end

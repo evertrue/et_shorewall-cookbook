@@ -46,6 +46,7 @@ describe 'et_shorewall::default' do
   end
 
   it 'starts shorewall' do
-    expect(chef_run).to start_service('shorewall')
+    expect(chef_run.execute('shorewall_make')).to notify('service[shorewall]')
+      .to(:start)
   end
 end
