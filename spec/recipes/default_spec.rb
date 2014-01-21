@@ -19,8 +19,8 @@ describe 'et_shorewall::default' do
     expect(chef_run).to render_file('/etc/default/shorewall')
   end
 
-  it 'executes shorewall_make' do
-    expect(chef_run).to run_execute('shorewall_make')
+  it 'does not execute shorewall_make' do
+    expect(chef_run).to_not run_execute('shorewall_make')
   end
 
   %w{
@@ -33,6 +33,11 @@ describe 'et_shorewall::default' do
   }.each do |conf_file|
     it "creates shorewall config - #{conf_file}" do
       expect(chef_run).to render_file("#{chef_run.node['et_shorewall']['conf_dir']}/#{conf_file}")
+    end
+
+    it 'notifies execute shorewall_make' do
+      expect(chef_run.template("#{chef_run.node['et_shorewall']['conf_dir']}/#{conf_file}"))
+        .to notify('execute[shorewall_make]').to(:run)
     end
   end
 
