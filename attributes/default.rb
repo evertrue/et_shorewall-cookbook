@@ -1,6 +1,6 @@
 default['et_shorewall']['conf_dir'] = '/etc/shorewall'
 default['et_shorewall']['zone_conf'] = {
-  'default_iface_options' => %w('tcpflags', 'nosmurfs', 'routefilter', 'logmartians'),
+  'default_iface_options' => %w(tcpflags nosmurfs routefilter logmartians),
   'zones' => {
     'net' => {
       'type' => 'ipv4',
