@@ -2,6 +2,12 @@ et_shorewall CHANGELOG
 ======================
 This is the Changelog for the et_shorewall cookbook.
 
+v1.1.1 (2014-01-28)
+-------------------
+
+* Switch back to using Berkshelf 2.x
+
+
 v1.1.0
 ------
 * Fix up ChefSpec tests
