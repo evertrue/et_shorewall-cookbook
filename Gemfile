@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 group :test, :development do
   gem 'rake'
-  gem 'stove', '~> 1.1'
+  gem 'stove', '~> 2.0.0.beta'
 end
 
 group :test do
