@@ -28,6 +28,9 @@ execute 'shorewall_make' do
   notifies :start, 'service[shorewall]'
 end
 
+Chef::Log.info 'Shorewall hosts:'
+Chef::Log.info node['shorewall']['hosts'].inspect
+
 %w{
   interfaces
   masq
@@ -35,6 +38,9 @@ end
   routestopped
   rules
   zones
+  tunnels
+  hosts
+  shorewall.conf
 }.each do |conf_file|
 
   template "#{node['et_shorewall']['conf_dir']}/#{conf_file}" do
@@ -44,7 +50,6 @@ end
     source "#{conf_file}.erb"
     notifies :run, 'execute[shorewall_make]'
   end
-
 end
 
 service 'shorewall' do

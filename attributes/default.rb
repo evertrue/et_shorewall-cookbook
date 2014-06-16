@@ -1,14 +1,13 @@
 default['et_shorewall']['conf_dir'] = '/etc/shorewall'
+default['et_shorewall']['log_file'] = '/var/log/messages'
+default['et_shorewall']['tunnels'] = []
 default['et_shorewall']['zone_conf'] = {
-  'default_iface_options' => %w(tcpflags nosmurfs routefilter logmartians),
+  'default_iface_options' => [],
   'zones' => {
     'net' => {
       'type' => 'ipv4',
       'interface' => 'eth0',
       'broadcast' => 'detect',
-      'iface_options' => [
-        'dhcp'
-      ],
       'masq' => {
         'sources' => [
           '10.0.0.0/8',
@@ -21,7 +20,10 @@ default['et_shorewall']['zone_conf'] = {
     'loc' => {
       'type' => 'ipv4',
       'interface' => 'eth1',
-      'broadcast' => 'detect'
+      'broadcast' => 'detect',
+      'iface_options' => [
+        'dhcp'
+      ]
     },
     'fw' => {
       'type' => 'firewall'
@@ -31,6 +33,11 @@ default['et_shorewall']['zone_conf'] = {
 default['et_shorewall']['policies'] = [
   {
     'source' => 'loc',
+    'dest' => 'net',
+    'policy' => 'ACCEPT'
+  },
+  {
+    'source' => '$FW',
     'dest' => 'net',
     'policy' => 'ACCEPT'
   },
